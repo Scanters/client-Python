@@ -1,28 +1,19 @@
-# -* encoding: uft-8 *-
+# -* encoding: utf-8 *-
+
 import logging
-import typing
 
 import requests
+import typing
 from requests.adapters import HTTPAdapter
 
-from .items import RPItem
-from .rp_response import RPResponse
+from reportportal_client.core.items import RPItem
+from reportportal_client.core.rp_response import RPResponse
 from ..static.defines import NOT_SET
 
 __all__ = ["APIDispatcher"]
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())
-
-RP_LOG_LEVELS = {
-    60000: "UNKNOWN",
-    50000: "FATAL",
-    40000: "ERROR",
-    30000: "WARN",
-    20000: "INFO",
-    10000: "DEBUG",
-    5000: "TRACE"
-}
 
 
 class APIDispatcher(object):

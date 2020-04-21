@@ -1,9 +1,9 @@
-# -* encoding: uft-8 *-
+# -* encoding: utf-8 *-
 
 from requests import Response
 
-from ..static.defines import NOT_FOUND
-from ..static.errors import EntryCreatedError, OperationCompletionError, ResponseError
+from reportportal_client.static.defines import NOT_FOUND
+from reportportal_client.static.exception import EntryCreatedError, OperationCompletionError, ResponseError
 
 
 class RPMessage(object):

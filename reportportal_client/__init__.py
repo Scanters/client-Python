@@ -12,13 +12,10 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-from .service import ReportPortalService
-from .service_async import ReportPortalServiceAsync
-
+from reportportal_client.core.rp_service import ReportPortalService
 
 __all__ = (
     ReportPortalService,
-    ReportPortalServiceAsync,
 )
 
 POST_LOGBATCH_RETRY_COUNT = 10

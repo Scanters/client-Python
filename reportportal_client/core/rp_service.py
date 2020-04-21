@@ -18,7 +18,7 @@ import json
 import logging
 import uuid
 
-from api.dispatcher import APIDispatcher
+from reportportal_client.api.dispatcher import APIDispatcher
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.NullHandler())

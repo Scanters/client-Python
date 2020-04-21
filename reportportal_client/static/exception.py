@@ -13,23 +13,25 @@
 #  limitations under the License.
 
 
-class Error(Exception):
+class RPExceptionBase(Exception):
     """General exception for package."""
 
 
-class ResponseError(Error):
+class RPError(RPExceptionBase):
+    """General error exception for package."""
+
+
+class ResponseError(RPError):
     """Error in response returned by RP"""
 
 
-class EntryCreatedError(ResponseError):
+class EntryCreatedError(RPError):
     """Represents error in case no entry is created.
-
     No 'id' in the json response.
     """
 
 
-class OperationCompletionError(ResponseError):
+class OperationCompletionError(RPError):
     """Represents error in case of operation failure.
-
     No 'msg' in the json response.
     """

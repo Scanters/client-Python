@@ -1,4 +1,4 @@
-# -* encoding: uft-8 *-
+# -* encoding: utf-8 *-
 import typing
 
 
@@ -12,9 +12,6 @@ class RPItem(object):
 
         self._child_items = set()  # type: typing.Set[RPItem]
         self._is_active = True
-
-    def __iter__(self):
-        return iter(self._child_items)
 
     @property
     def is_active(self):
@@ -42,12 +39,3 @@ class RPItem(object):
             child.complete(nested=nested)
 
 
-class RPItemManager(object):
-    def __init__(self):
-        self._launch = None
-
-    def start_launch(self):
-        pass
-
-    def stop_launch(self):
-        pass

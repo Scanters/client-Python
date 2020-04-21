@@ -1,16 +1,37 @@
-# -* encoding: uft-8 *-
-from abc import ABC, abstractmethod
+# -* encoding: utf-8 *-
+from reportportal_client.lib.abstract import AbstractBaseClass
+from reportportal_client.static.assertion import assertion
+from reportportal_client.static.defines import DEFAULT_PRIORITY, Priority
 
 
-class RPRequestBase(ABC):
-    @abstractmethod
-    def to_json(self):
-        pass
+class RPRequestBase(object):
+    __metaclass__ = AbstractBaseClass
+
+    def __init__(self):
+        self._priority = DEFAULT_PRIORITY
+
+    def __ge__(self, other):
+        # type: ("RPRequestBase") -> bool
+        """
+        Used for comparison when put in to PriorityQueue
+        """
+        return self.priority >= other.priority
+
+    @property
+    def priority(self):
+        return self._priority
+
+    @priority.setter
+    def priority(self, value):
+        assertion.is_instance(value, Priority)
+        self._priority = value
 
 
 class LaunchStartRequest(RPRequestBase):
-    def __init__(self, name, start_time,
-                 description=None, uuid=None, attributes=None, mode=None, rerun=None, rerun_of=None):
+    def __init__(self, name, start_time, description=None, uuid=None, attributes=None, mode=None, rerun=None,
+                 rerun_of=None):
+        super(LaunchStartRequest, self).__init__()
+
         self.name = name
         self.start_time = start_time
         self.description = description
@@ -25,8 +46,10 @@ class LaunchStartRequest(RPRequestBase):
 
 
 class ItemStartRequest(RPRequestBase):
-    def __init__(self, name, start_time, type_, launch_uuid,
-                 description, attributes, uuid, code_ref, parameters, unique_id, retry, has_stats):
+    def __init__(self, name, start_time, type_,
+                 launch_uuid, description, attributes, uuid, code_ref, parameters,
+                 unique_id, retry, has_stats):
+        super(ItemStartRequest, self).__init__()
         self.name = name
         self.start_time = start_time
         self.type_ = type_

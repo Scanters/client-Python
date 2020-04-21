@@ -15,5 +15,5 @@ setup(
     license='Apache 2.0.',
     keywords=['testing', 'reporting', 'reportportal'],
     classifiers=[],
-    install_requires=['requests>=2.4.2', 'six'],
+    install_requires=['requests>=2.4.2', 'six', 'typing', 'attr'],
 )
